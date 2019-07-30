@@ -1,0 +1,112 @@
+﻿@model TaxiApplication.Data.RouteViewModel
+
+@{
+    ViewBag.Title = "ConfirmReservation";
+}
+
+<h2><h2>Confirm Booking</h2></h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <table class="table table-hover table-condensed" id="my_list">
+            <tr>
+                @*<th>Bookings</th>*@
+                @*<td>
+                        @Html.DisplayFor(model => model.bookings)
+                    </td>*@
+            </tr>
+            <tr>
+                <th>Rank Name</th>
+                <td>
+                    @Html.DisplayFor(model => model.RankName)
+                </td>
+            </tr>
+            <tr>
+                <th>Route Name</th>
+                <td>
+                    @Html.DisplayFor(model => model.RouteName)
+                </td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>
+                    @Html.DisplayFor(model => model.Pricevalue)
+                </td>
+            </tr>
+            <tr>
+                <th>Stop Over</th>
+                <td>
+                    @Html.DisplayFor(model => model.StopOvers)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <th>Taxi Number</th>
+                <td>
+                    @Html.DisplayFor(model => model.RegNo)
+                </td>
+            </tr>
+            <tr>
+                <th>Driver Name</th>
+                <td>
+                    @Html.DisplayFor(model => model.DriverName)
+                </td>
+            </tr>
+            <tr>
+                <th>Type of Taxi</th>
+                <td>
+                    @Html.DisplayFor(model => model.MakeType)
+                </td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>
+                    @Html.DisplayFor(model => model.RouteDuration)
+                </td>
+            </tr>
+            @*<tr>
+                    <th>Total Price</th>
+                    <td>
+                        @Html.DisplayFor(model => model.TotalPrice)
+                    </td>
+                </tr>*@
+        </table>
+    </div>
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <th>Number Of laggage</th>
+                <td>
+                    @Html.DisplayFor(model => model.NumberLaggage)
+                </td>
+            </tr>
+            <tr>
+                <th>Laggage Size</th>
+                <td>
+                    @Html.DisplayFor(model => model.Size)
+                </td>
+            </tr>
+            <tr>
+                <th>Laggage Price</th>
+                <td>
+                    @Html.DisplayFor(model => model.LaggagePrice)
+                </td>
+            </tr>
+            <tr>
+                <th>Total Price</th>
+                <td>
+                    @Html.DisplayFor(model => model.TotalPrice)
+                </td>
+            </tr>
+            @*<tr>
+                    <th>Total Price</th>
+                    <td>
+                        @Html.DisplayFor(model => model.TotalPrice)
+                    </td>
+                </tr>*@
+        </table>
+    </div>
+</div>

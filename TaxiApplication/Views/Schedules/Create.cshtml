@@ -1,0 +1,53 @@
+﻿@model TaxiApplication.Data.Schedule
+@using TaxiApplication.Models
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal modal-content" style="margin-top:5%;width:45%;padding-left:30px;padding-right:30px;margin-bottom:50px">
+
+        <h4>Schedule</h4>
+
+        <label>Select ownerID</label>
+        @Html.DropDownList("ownerID", null, htmlAttributes: new { @class = "w3-border w3-padding", style = "width:100%" })
+        @Html.ValidationMessageFor(model => model.ownerID, "", new { @class = "text-danger" })
+
+        <label>Schedule Number</label>
+        @Html.DropDownList("id", null, htmlAttributes: new { @class = "w3-border w3-padding", style = "width:100%" })
+        @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+
+        @*<label>Select RankId</label>
+        @Html.DropDownList("RankId", null, htmlAttributes: new { @class = "w3-border w3-padding", style = "width:100%" })
+        @Html.ValidationMessageFor(model => model.RankId, "", new { @class = "text-danger" })*@
+
+
+        <label>Select RouteId</label>
+        @Html.DropDownList("RouteId", null, htmlAttributes: new { @class = "w3-border w3-padding", style = "width:100%" })
+        @Html.ValidationMessageFor(model => model.RouteId, "", new { @class = "text-danger" })
+
+        <span class="w3-left">
+            <a class="w3-button" type="submit" style="margin-top:5px;background-color:#f0ad4e;color:white" href="~/Schedules/Index"> Back </a>
+        </span>
+
+        <span class="w3-right">
+            <button class="w3-button" type="submit" style="margin-top:5px;background-color:#f0ad4e;color:white"> Save </button>
+        </span>
+
+
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

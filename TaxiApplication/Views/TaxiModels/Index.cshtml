@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TaxiApplication.Data.TaxiModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<div id="listheader">
+    <p>
+        <a href="~/TaxiModels/Create" class="w3-button" style="background-color:#f0ad4e;color:white">Add New</a>
+    </p>
+
+</div>
+<table class="table table-bordered table-striped" style="width:80%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxiModelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seats)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxiModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaxiModelID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaxiModelID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaxiModelID })
+            </td>
+        </tr>
+    }
+
+</table>

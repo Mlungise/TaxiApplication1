@@ -1,0 +1,87 @@
+﻿@model TaxiApplication.Data.Driver
+@using TaxiApplication.BusinessLogics
+@{
+    Layout = "~/Views/Shared/_Owner.cshtml";
+    BusinessLogic bl = new BusinessLogic();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal modal-content" style="margin-top:5%;width:45%;padding-left:30px;padding-right:30px;margin-bottom:50px">
+        <h4>Add Driver</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <label>First Name</label>
+        <input type="text" name="FirstName" class="w3-border w3-padding" required placeholder="enter first name" />
+        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+        <label>Last Name</label>
+        <input type="text" name="LastName" class="w3-border w3-padding" required placeholder="enter surname" />
+        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+        <label>Gender</label>
+        <br />
+        <input type="radio" name="Gender" value="Male" /> <span>Male</span>
+        <input type="radio" name="Gender" value="Female" /> <span>Female</span>
+        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+        <br />
+
+        <label>Address</label>
+        <input type="text" name="Address" class="w3-border w3-padding" required placeholder="enter address" />
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+        <label>Phone number</label>
+        <input type="number" name="PhoneNumber" class="w3-border w3-padding" required placeholder="10 digit phone number" />
+        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+
+        <label>Email</label>
+        <input type="email" name="Email" class="w3-border w3-padding" required placeholder="example some@gmail.com" />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+        <label>License Code</label>
+        <input type="number" name="LicenseCode" class="w3-border w3-padding" required placeholder="enter license code" />
+        @Html.ValidationMessageFor(model => model.LicenseCode, "", new { @class = "text-danger" })
+
+        <label>License Expiry Date</label>
+        <br />
+        <input type="datetime-local" name="LicenseExpiryDate" class="w3-border w3-padding" required />
+        @Html.ValidationMessageFor(model => model.LicenseExpiryDate, "", new { @class = "text-danger" })
+        <br />
+
+        @*<label>Owner</label>
+        <br />
+        <select name="ownerID" class="w3-border w3-padding">
+            @{
+                foreach (var e in bl.Owners())
+                {
+                    <option value="@e.ownerID">@e.FirstName @e.LastName</option>
+                }
+            }
+            
+        </select>*@
+
+        <br /><br />
+
+        <span class="w3-left">
+            <a class="w3-button" type="submit" style="margin-top:5px;background-color:#f0ad4e;color:white" href="~/Drivers/Index"> Back </a>
+        </span>
+
+        <span class="w3-right">
+            <button class="w3-button" type="submit" style="margin-top:5px;background-color:#f0ad4e;color:white"> Save </button>
+        </span>
+        <br /><br />
+    </div>
+    }
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TaxiApplication.Data.TaxiMake>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="~/TaxiMakes/Create" class="w3-button" style="background-color:#f0ad4e;color:white">Add New</a>
+</p>
+<table class="table table-bordered table-striped" style="width:80%">
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MakeType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @*<a href="@Url.Action("Details", "VehicleMakes", new { id = item.vMakeID })" title="View Details" , rel="nofollow">
+                <img src="data:image/png;base64,
+                     @Convert.ToBase64String(item.Image, 0, item.Image.Length)" style="width: 60px; height: 60px" alt="" />
+            </a>*@
+            <img src="@Url.Action("RenderImage", "TaxiMakes", new { id = item.MakeId})" width="50" height="60" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MakeType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MakeId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MakeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MakeId })
+        </td>
+    </tr>
+    }
+
+</table>

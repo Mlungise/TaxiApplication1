@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TaxiApplication.Data.Taxi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Owner.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped" style="width:80%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxiNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxiMake.MakeType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxiModel.TaxiModelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxiNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxiMake.MakeType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxiModel.TaxiModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaxiNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaxiNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaxiNo })
+            </td>
+        </tr>
+    }
+
+</table>

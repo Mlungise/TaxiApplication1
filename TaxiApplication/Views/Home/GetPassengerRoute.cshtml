@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetPassengerRoute</title>
+    @using TaxiApplication.BusinessLogics
+    @{
+        Layout = "~/Views/Shared/_Passenger.cshtml";
+        BusinessLogic bl = new BusinessLogic();
+        var message = TempData["AlertMessage"] ?? string.Empty;
+
+    }
+    <script>
+    var msg = '@message';
+    if (msg)
+        alert(msg);
+    </script>
+
+
+</head>
+<body>
+    
+
+        <br />
+        <br />
+        <br />
+        <label>Route Details</label>
+    <br />
+        <table class="table table-bordered table-striped" style="width:80%">
+            <tr>
+                <th>
+                    @Html.DisplayName("Route")
+                </th>
+                <th>
+                    @Html.DisplayName("First Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Phone Number")
+                </th>
+                <th>
+                    @Html.DisplayName("Taxi Reg No")
+                </th>
+                <th>
+                    @Html.DisplayName("Taxi Make")
+                </th>
+                <th>
+                    @Html.DisplayName("Available Seats")
+                </th>
+                <th>
+                    @Html.DisplayName("Route Price")
+                </th>
+                <th>
+                </th>
+
+            </tr>
+            @foreach (var a in bl.passengerAvail(Convert.ToInt16(Session["rid"])))
+            {
+                <tr>
+                    <td>@a.schedule.route.RouteName</td>
+                    <td>@a.driver.FirstName</td>
+                    <td>@a.driver.PhoneNumber</td>
+                    <td>@a.taxi.RegNo</td>
+                    <td>@a.taxi.TaxiMake.MakeType</td>
+                    <td>@a.CalcSeats()</td>
+                    <td>@a.SelectPrie()</td>
+                    <td>
+                        <a href="@Url.Action("Reserve", "Availables", new { id = a.ID })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
+                    </td>
+
+                </tr>
+            }
+  
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿@model TaxiApplication.Data.Laggage
+@using TaxiApplication.BusinessLogics
+
+@{
+    BusinessLogic bl = new BusinessLogic();
+
+    ViewBag.Title = "ConfirmDetails";
+}
+
+<h2>ConfirmDetails</h2>
+
+<br /><br />
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3>Confirm Application</h3>
+    </div>
+    <div class="panel-body" style="height:25em;overflow-y:auto">
+        <h4>Please Route Details</h4>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>
+                    Rank Name
+                </td>
+                <td>
+                    Route
+                </td>
+                <td>
+                    Route Price
+                </td>
+                @*<td>
+                    Stop Over
+                </td>*@
+                @*<td>
+                    Taxi No
+                </td>*@
+            </tr>
+            @foreach (var a in bl.passengerAvail(Convert.ToInt16(Session["rid"])))
+            {
+                <tr>
+                    <td>@a.schedule.rank.RankName</td>
+                    <td>@a.schedule.route.RouteName</td>
+                    <td>@a.SelectPrie()</td>
+                    
+
+                </tr>
+            }
+        </table>
+        <h4>Driver details.</h4>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>
+                    Driver Name
+                </td>
+                <td>
+                    Taxi Number
+                </td>
+                <td>
+                    Taxi Make
+                </td>
+
+            </tr>
+            @foreach (var a in bl.passengerAvail(Convert.ToInt16(Session["rid"])))
+            {
+                <tr>
+                    <td>@a.driver.FirstName</td>
+                    <td>@a.taxi.RegNo</td>
+                    <td>@a.taxi.TaxiMake.MakeType</td>                   
+                </tr>
+            }
+        </table>
+        <h4>Laggage details.</h4>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>
+                    laggage Size
+                </td>
+                <td>
+                    Number Of Laggage
+                </td>
+                <td>
+                    Laggage Price
+                </td>
+
+            </tr>
+            @foreach (var a in bl.laggage(Convert.ToInt16(Session["rid"])))
+            {
+                <tr>
+                    <td>@a.getSize()</td>
+                    <td>@a.NumberLaggage</td>
+                    <td>@a.getPrice()</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
